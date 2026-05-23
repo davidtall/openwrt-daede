@@ -1,0 +1,107 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+msgid "A modern dashboard for dae — eBPF-based transparent proxy. Subscriptions, nodes, routing and DNS are managed in the daed WebUI."
+msgstr ""
+
+msgid "Action \"%s\" error: %s"
+msgstr ""
+
+msgid "Action \"%s\" failed (exit %d): %s"
+msgstr ""
+
+msgid "Action \"%s\" succeeded."
+msgstr ""
+
+msgid "Auto-scroll"
+msgstr ""
+
+msgid "Basic"
+msgstr ""
+
+msgid "Clear File"
+msgstr ""
+
+msgid "Clear View"
+msgstr ""
+
+msgid "Collecting data…"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Error reading log: %s"
+msgstr ""
+
+msgid "Failed to clear log: %s"
+msgstr ""
+
+msgid "Filter (substring)"
+msgstr ""
+
+msgid "Grant access to daed configuration"
+msgstr ""
+
+msgid "Host:port that the daed WebUI and GraphQL API listen on."
+msgstr ""
+
+msgid "Listen Address"
+msgstr ""
+
+msgid "Loading…"
+msgstr ""
+
+msgid "Log"
+msgstr ""
+
+msgid "Log file cleared."
+msgstr ""
+
+msgid "Log file does not exist yet."
+msgstr ""
+
+msgid "Max Log Backups"
+msgstr ""
+
+msgid "Max Log Size (MB)"
+msgstr ""
+
+msgid "Number of rotated log files to keep."
+msgstr ""
+
+msgid "Open WebUI"
+msgstr ""
+
+msgid "Pause"
+msgstr ""
+
+msgid "Reload"
+msgstr ""
+
+msgid "Restart"
+msgstr ""
+
+msgid "Rotate the log file once it grows past this many megabytes."
+msgstr ""
+
+msgid "Service Status"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "Stop"
+msgstr ""
+
+msgid "Truncate daed.log on the router? This cannot be undone."
+msgstr ""
+
+msgid "daed"
+msgstr ""

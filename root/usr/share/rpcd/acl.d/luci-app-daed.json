@@ -1,0 +1,26 @@
+{
+	"luci-app-daed": {
+		"description": "Grant access to daed configuration",
+		"read": {
+			"file": {
+				"/var/log/daed/daed.log": [ "read" ],
+				"/proc/uptime": [ "read" ],
+				"/etc/init.d/daed status": [ "exec" ]
+			},
+			"ubus": {
+				"service": [ "list" ]
+			},
+			"uci": [ "daed" ]
+		},
+		"write": {
+			"file": {
+				"/var/log/daed/daed.log": [ "write" ],
+				"/etc/init.d/daed start": [ "exec" ],
+				"/etc/init.d/daed stop": [ "exec" ],
+				"/etc/init.d/daed restart": [ "exec" ],
+				"/etc/init.d/daed reload": [ "exec" ]
+			},
+			"uci": [ "daed" ]
+		}
+	}
+}
