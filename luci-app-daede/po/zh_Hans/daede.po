@@ -493,3 +493,64 @@ msgstr "启动中…"
 
 msgid "Start failed: %s"
 msgstr "启动失败：%s"
+
+# ---- converter.js ----
+msgid "Subscription Converter"
+msgstr "订阅转换"
+
+msgid "Convert Clash YAML into share links, preview the result, then import selected nodes into dae or daed. Inputs and credentials are not saved."
+msgstr "将 Clash YAML 转换为分享链接，预览后把所选节点导入 dae 或 daed。输入内容和凭据不会保存。"
+
+msgid "1. Input Clash YAML"
+msgstr "1. 输入 Clash YAML"
+
+msgid "Fetch and parse"
+msgstr "获取并解析"
+
+msgid "Or paste Clash YAML here"
+msgstr "或在此粘贴 Clash YAML"
+
+msgid "Parse pasted YAML"
+msgstr "解析粘贴内容"
+
+msgid "2. Conversion Preview"
+msgstr "2. 转换预览"
+
+msgid "Select compatible new nodes"
+msgstr "选择可导入的新节点"
+
+msgid "Clear selection"
+msgstr "清空选择"
+
+msgid "Filter name or protocol"
+msgstr "筛选节点名称或协议"
+
+msgid "3. Import Selected Nodes"
+msgstr "3. 导入所选节点"
+
+msgid "Target backend"
+msgstr "目标后端"
+
+msgid "Import selected nodes (%d)"
+msgstr "导入所选节点（%d）"
+
+msgid "Detected %d · compatible %d · duplicates %d · incompatible %d"
+msgstr "检测到 %d 个 · 可导入 %d 个 · 重复 %d 个 · 不兼容 %d 个"
+
+msgid "Ready to import"
+msgstr "可导入"
+
+msgid "Already exists, skipped"
+msgstr "已存在，跳过"
+
+msgid "Sign in to daed"
+msgstr "登录 daed"
+
+msgid "Credentials are used only for this import and are not saved."
+msgstr "凭据仅用于本次导入，不会保存。"
+
+msgid "Sign in and import"
+msgstr "登录并导入"
+
+msgid "Import complete: added %d, duplicates %d, failed %d"
+msgstr "导入完成：新增 %d，重复 %d，失败 %d"

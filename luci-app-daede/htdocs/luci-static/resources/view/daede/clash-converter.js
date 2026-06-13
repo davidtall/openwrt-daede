@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 'use strict';
+'require baseclass';
 
 function utf8Base64(value) {
 	const bytes = new TextEncoder().encode(String(value));
@@ -75,7 +76,22 @@ function makeResult(node, link) {
 function convertSs(node) {
 	requireFields(node, [ 'server', 'port', 'cipher', 'password' ]);
 	const auth = base64Url(node.cipher + ':' + node.password);
-	return 'ss://' + auth + '@' + endpoint(node.server, node.port) + '#' + encodeURIComponent(node.name || 'Node');
+	let query = '';
+	if (node.plugin) {
+		const fields = [ String(node.plugin) ];
+		const opts = node['plugin-opts'] || {};
+		Object.keys(opts).forEach(function(key) {
+			const value = opts[key];
+			if (value === true)
+				fields.push(key);
+			else if (value !== false && value !== undefined && value !== null && value !== '')
+				fields.push(key + '=' + value);
+		});
+		const params = new URLSearchParams();
+		params.set('plugin', fields.join(';'));
+		query = '?' + params.toString();
+	}
+	return 'ss://' + auth + '@' + endpoint(node.server, node.port) + query + '#' + encodeURIComponent(node.name || 'Node');
 }
 
 function convertVmess(node) {
@@ -238,5 +254,8 @@ const api = {
 
 if (typeof module !== 'undefined' && module.exports)
 	module.exports = api;
+
+if (typeof baseclass !== 'undefined')
+	return baseclass.extend(api);
 
 return api;

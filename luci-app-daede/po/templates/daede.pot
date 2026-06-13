@@ -424,3 +424,83 @@ msgstr ""
 #: dae.js
 msgid "Start failed: %s"
 msgstr ""
+
+#: converter.js
+msgid "Subscription Converter"
+msgstr ""
+
+#: converter.js
+msgid "Convert Clash YAML into share links, preview the result, then import selected nodes into dae or daed. Inputs and credentials are not saved."
+msgstr ""
+
+#: converter.js
+msgid "1. Input Clash YAML"
+msgstr ""
+
+#: converter.js
+msgid "Fetch and parse"
+msgstr ""
+
+#: converter.js
+msgid "Or paste Clash YAML here"
+msgstr ""
+
+#: converter.js
+msgid "Parse pasted YAML"
+msgstr ""
+
+#: converter.js
+msgid "2. Conversion Preview"
+msgstr ""
+
+#: converter.js
+msgid "Select compatible new nodes"
+msgstr ""
+
+#: converter.js
+msgid "Clear selection"
+msgstr ""
+
+#: converter.js
+msgid "Filter name or protocol"
+msgstr ""
+
+#: converter.js
+msgid "3. Import Selected Nodes"
+msgstr ""
+
+#: converter.js
+msgid "Target backend"
+msgstr ""
+
+#: converter.js
+msgid "Import selected nodes (%d)"
+msgstr ""
+
+#: converter.js
+msgid "Detected %d · compatible %d · duplicates %d · incompatible %d"
+msgstr ""
+
+#: converter.js
+msgid "Ready to import"
+msgstr ""
+
+#: converter.js
+msgid "Already exists, skipped"
+msgstr ""
+
+#: converter.js
+msgid "Sign in to daed"
+msgstr ""
+
+#: converter.js
+msgid "Credentials are used only for this import and are not saved."
+msgstr ""
+
+#: converter.js
+msgid "Sign in and import"
+msgstr ""
+
+#: converter.js
+msgid "Import complete: added %d, duplicates %d, failed %d"
+msgstr ""
