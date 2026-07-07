@@ -390,8 +390,6 @@ fi
 echo "Installing (core first, then LuCI)..."
 _install_rc=0
 if [ "$PM" = "opkg" ]; then
-  # --force-reinstall: opkg may have a package marked installed while its files
-  # are gone (issue #30), so a plain install no-ops and never extracts the binary.
   # shellcheck disable=SC2086
   opkg install --force-reinstall $FILES || _install_rc=$?
 else
