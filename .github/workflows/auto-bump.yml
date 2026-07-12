@@ -36,7 +36,7 @@ jobs:
           wing_new=$(git ls-remote https://github.com/daeuniverse/dae-wing HEAD | cut -f1)
           # route A: track upstream dae main (merged onto the olicesx perf base at
           # assemble time), not the olicesx kdae fork, so the core stays fresh.
-          core_up_new=$(git ls-remote https://github.com/olicesx/dae kdae | cut -f1)
+          core_up_new=$(git ls-remote https://github.com/daeuniverse/dae main | cut -f1)
           outbound_new=$(git ls-remote https://github.com/olicesx/outbound perf/complete-optimizations | cut -f1)
           # quic-go is no longer auto-tracked: we own its perf delta as patches in
           # ci/patches/quic-go and pin only QUICGO_BASE_COMMIT. Refresh deliberately
