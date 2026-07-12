@@ -60,7 +60,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.FORK_SYNC_TOKEN }}
         run: |
-          gh repo sync davidtall/outbound -b perf/complete-optimizations --source olicesx/outbound --force
+          #gh repo sync davidtall/outbound -b perf/complete-optimizations --source olicesx/outbound --force
           # dae core: mirror kdae as delete-insurance; build still pins frozen CORE_COMMIT (an ancestor of kdae), so output is unchanged.
           gh repo sync davidtall/dae -b kdae --source olicesx/dae --force
           # quic-go: NOT synced — base pinned, perf applied from ci/patches/quic-go.
