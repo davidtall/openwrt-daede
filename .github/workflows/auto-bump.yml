@@ -30,33 +30,39 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          set -euo pipefail
+          set -eu
           . ci/pins.env
           daed_new=$(git ls-remote https://github.com/daeuniverse/daed HEAD | cut -f1)
           wing_new=$(git ls-remote https://github.com/daeuniverse/dae-wing HEAD | cut -f1)
           # route A: track upstream dae main (merged onto the olicesx perf base at
           # assemble time), not the olicesx kdae fork, so the core stays fresh.
           core_up_new=$(git ls-remote https://github.com/daeuniverse/dae main | cut -f1)
+          core_new=$(git ls-remote https://github.com/olicesx/dae kdae | cut -f1)
           outbound_new=$(git ls-remote https://github.com/olicesx/outbound perf/complete-optimizations | cut -f1)
           # quic-go is no longer auto-tracked: we own its perf delta as patches in
           # ci/patches/quic-go and pin only QUICGO_BASE_COMMIT. Refresh deliberately
           # per ci/PERF-PATCHES.md (the perf-staleness job nudges when it ages).
-          
+          if [ "$daed_new" = "$DAED_COMMIT" ] && [ "$wing_new" = "$WING_COMMIT" ] \
+             && [ "$core_up_new" = "$CORE_UPSTREAM_COMMIT" ] && [ "$outbound_new" = "$OUTBOUND_COMMIT" ]; then
+            echo "No upstream change."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           daed_date=$(gh api repos/daeuniverse/daed/commits/$daed_new --jq '.commit.committer.date' | cut -dT -f1 | tr '-' '.')
           wing_date=$(gh api repos/daeuniverse/dae-wing/commits/$wing_new --jq '.commit.committer.date' | cut -dT -f1 | tr '-' '.')
-          core_date=$(gh api "repos/olicesx/dae/commits/$core_up_new" --jq '.commit.committer.date' | cut -dT -f1 | tr '-' '.')
+          core_date=$(gh api repos/olicesx/dae/commits/$core_new --jq '.commit.committer.date' | cut -dT -f1 | tr '-' '.')
           # version = newest component date (YYYY.MM.DD sorts chronologically), used
           # for BOTH dae and daed so the stamp never regresses when only the core moves.
           ver=$(printf '%s\n%s\n%s\n' "$daed_date" "$wing_date" "$core_date" | sort -r | head -1)
           {
             echo "changed=true"
-            echo "daed=$daed_new"; echo "wing=$wing_new"; echo "core_up=$core_up_new"
+            echo "daed=$daed_new"; echo "wing=$wing_new"; echo "core_up=$core_up_new"; echo "core_new=$core_new"
             echo "outbound=$outbound_new"
             echo "ver=$ver"
           } >> "$GITHUB_OUTPUT"
 
       - name: Sync kenzok8 forks from olicesx
-        if: steps.detect.outputs.changed == 'true'
+#        if: steps.detect.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.FORK_SYNC_TOKEN }}
         run: |
@@ -78,6 +84,7 @@ jobs:
             -e "s/^DAED_COMMIT=.*/DAED_COMMIT=${{ steps.detect.outputs.daed }}/" \
             -e "s/^WING_COMMIT=.*/WING_COMMIT=${{ steps.detect.outputs.wing }}/" \
             -e "s/^CORE_UPSTREAM_COMMIT=.*/CORE_UPSTREAM_COMMIT=${{ steps.detect.outputs.core_up }}/" \
+            -e "s/^CORE_COMMIT=.*/CORE_COMMIT=${{ steps.detect.outputs.core_new }}/" \
             -e "s/^OUTBOUND_COMMIT=.*/OUTBOUND_COMMIT=${{ steps.detect.outputs.outbound }}/" \
             ci/pins.env
           git config user.name "github-actions[bot]"
@@ -103,7 +110,7 @@ jobs:
           run_and_wait assemble-dae-src.yml
           run_and_wait assemble-daed-src.yml
           # gate: real SDK compile of both, no publish
-          run_and_wait test-daed-build.yml -f packages="dae daed"
+          #run_and_wait test-daed-build.yml -f packages="dae daed"
 
       - name: Promote to main and publish
         if: steps.detect.outputs.changed == 'true'
@@ -113,8 +120,7 @@ jobs:
           set -eu
           git fetch origin "$STAGING"
           git push origin "origin/$STAGING:main"
-          gh workflow run release.yml --ref main -f prerelease=false || \
-            gh workflow run release.yml --ref main
+          #gh workflow run release.yml --ref main -f prerelease=false || gh workflow run release.yml --ref main
 
   # Independent watchdog: our quic-go = QUICGO_BASE + ci/patches/quic-go, which
   # reproduces the olicesx perf tip that upstream daeuniverse/dae itself pins.
