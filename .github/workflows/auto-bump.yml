@@ -42,7 +42,7 @@ jobs:
           # quic-go is no longer auto-tracked: we own its perf delta as patches in
           # ci/patches/quic-go and pin only QUICGO_BASE_COMMIT. Refresh deliberately
           # per ci/PERF-PATCHES.md (the perf-staleness job nudges when it ages).
-          if [ "$daed_new" = "$DAED_COMMIT" ] && [ "$wing_new" = "$WING_COMMIT" ] \
+          if [ "$daed_new" = "$DAED_COMMIT" ] && [ "$wing_new" = "$WING_COMMIT" ] && [ "$core_new" = "$CORE_COMMIT" ] \
              && [ "$core_up_new" = "$CORE_UPSTREAM_COMMIT" ] && [ "$outbound_new" = "$OUTBOUND_COMMIT" ]; then
             echo "No upstream change."
             echo "changed=false" >> "$GITHUB_OUTPUT"
