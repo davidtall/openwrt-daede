@@ -5,13 +5,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=daed
-PKG_VERSION:=2026.07.10
+PKG_VERSION:=2026.07.08
 PKG_RELEASE:=1
 
-PKG_SOURCE:=daed-src-2026.07.10-2a714fdcfb48.tar.gz
+PKG_SOURCE:=daed-src-2026.07.08-71b818ad193b.tar.gz
 PKG_SOURCE_URL:=https://github.com/davidtall/openwrt-daede/releases/download/daed-src
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_HASH:=ccaf994b53fd56cc01c364e119691847cb4b4ce67d1dc8e7934aa958e6bd4ad4
+PKG_HASH:=f1af7a21a98ab630e92ebef2f54d16675820d5558d987e5a1b706ede7ab60c10
 
 PKG_LICENSE:=AGPL-3.0-only MIT
 PKG_LICENSE_FILES:=LICENSE wing/LICENSE
