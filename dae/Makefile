@@ -11,7 +11,7 @@ PKG_RELEASE:=1
 PKG_SOURCE:=dae-src-2026.07.10-8537a228c271.tar.gz
 PKG_SOURCE_URL:=https://github.com/kenzok8/openwrt-daede/releases/download/dae-src
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_HASH:=e8a9dee3be4d1f64de8b257a493a56f22591de5dadee94adf0ecf9d8d4e36efa
+PKG_HASH:=a126372c6ae108f8ac0d061d025b6e8f5167bad7e8325224d5e5bf7f0eb71659
 
 PKG_LICENSE:=AGPL-3.0-only
 PKG_LICENSE_FILE:=LICENSE
