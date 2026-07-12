@@ -30,7 +30,7 @@ jobs:
             git -C "$2" checkout "$3"
           }
 
-          fetch_at https://github.com/kenzok8/dae "$OUT/core" "$CORE_COMMIT"
+          fetch_at https://github.com/olicesx/dae "$OUT/core" "$CORE_COMMIT"
           # route A: merge upstream dae main onto the frozen olicesx perf base so the
           # core tracks official while keeping the eBPF/perf fork. A merge conflict
           # fails the build (gate) and signals a manual rebase is needed.

@@ -9,7 +9,7 @@ PKG_VERSION:=2026.07.10
 PKG_RELEASE:=1
 
 PKG_SOURCE:=daed-src-2026.07.10-2a714fdcfb48.tar.gz
-PKG_SOURCE_URL:=https://github.com/kenzok8/openwrt-daede/releases/download/daed-src
+PKG_SOURCE_URL:=https://github.com/davidtall/openwrt-daede/releases/download/daed-src
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_HASH:=ccaf994b53fd56cc01c364e119691847cb4b4ce67d1dc8e7934aa958e6bd4ad4
 
